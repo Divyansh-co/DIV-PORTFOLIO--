@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react'
 export default function Loader({ onFinish }) {
   const [progress, setProgress] = useState(0)
   const [hidden, setHidden] = useState(false)
+  const [removed, setRemoved] = useState(false)
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -12,31 +13,38 @@ export default function Loader({ onFinish }) {
           setTimeout(() => {
             setHidden(true)
             onFinish?.()
-          }, 500)
+            setTimeout(() => setRemoved(true), 600)
+          }, 350)
           return 100
         }
-        return prev + Math.random() * 12 + 4
+        return prev + Math.random() * 22 + 10
       })
-    }, 140)
+    }, 70)
     return () => clearInterval(interval)
   }, [onFinish])
 
+  if (removed) return null
+
   return (
-    <div className={`loader-overlay ${hidden ? 'hidden' : ''}`}>
-      <div className="loader-logo">D<span>.</span>M</div>
-      <div style={{
-        fontFamily: "'Inter', sans-serif",
-        fontSize: '0.72rem',
-        color: 'rgba(245, 245, 244, 0.25)',
-        letterSpacing: '0.25em',
-        textTransform: 'uppercase',
-        marginBottom: '28px',
-        fontWeight: 300,
-      }}>
-        Loading
+    <div
+      className={`fixed inset-0 z-50 flex flex-col items-center justify-center bg-[#08080A] transition-opacity duration-500 ${
+        hidden ? 'opacity-0 pointer-events-none' : 'opacity-100'
+      }`}
+    >
+      <div className="flex items-center gap-1 text-2xl font-bold tracking-tight text-white font-display mb-3">
+        <span>DM</span>
+        <span className="text-[#E07A3D]">.</span>
       </div>
-      <div className="loader-bar">
-        <div className="loader-bar-fill" style={{ width: `${Math.min(progress, 100)}%` }} />
+
+      <div className="text-[11px] font-mono text-[#6E6A65] tracking-widest uppercase mb-6">
+        Initializing Workspace
+      </div>
+
+      <div className="w-48 h-0.5 bg-[#181512] rounded-full overflow-hidden">
+        <div
+          className="h-full bg-gradient-to-r from-[#E07A3D] to-[#EB894C] transition-all duration-150 ease-out"
+          style={{ width: `${Math.min(progress, 100)}%` }}
+        />
       </div>
     </div>
   )
