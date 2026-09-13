@@ -1,82 +1,99 @@
 import { useState, useEffect } from 'react'
-import { FiCopy, FiCheck } from 'react-icons/fi'
+import { FiMenu, FiX } from 'react-icons/fi'
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false)
-  const [copied, setCopied] = useState(false)
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 20)
+      setScrolled(window.scrollY > 25)
     }
     window.addEventListener('scroll', handleScroll, { passive: true })
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
-  const copyEmail = () => {
-    navigator.clipboard.writeText('divyanshmishra.python@gmail.com')
-    setCopied(true)
-    setTimeout(() => setCopied(false), 2000)
-  }
+  const navLinks = [
+    { name: 'Work', href: '#projects' },
+    { name: 'Services', href: '#services' },
+    { name: 'About', href: '#about' },
+    { name: 'Experience', href: '#experience' },
+    { name: 'Contact', href: '#contact' },
+  ]
 
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled
-          ? 'bg-[#070709]/85 backdrop-blur-md border-b border-white/[0.06] py-3.5'
-          : 'bg-transparent py-5'
+          ? 'bg-[#000000]/90 backdrop-blur-md border-b border-white/[0.08] shadow-lg shadow-black/80 py-4'
+          : 'bg-transparent py-6'
       }`}
     >
-      <div className="max-w-6xl mx-auto px-6 flex items-center justify-between">
-        {/* Left: Logo */}
+      <div className="max-w-7xl mx-auto px-6 lg:px-12 flex items-center justify-between">
+        {/* Left: Logo "DM" */}
         <a
           href="#"
-          className="group flex items-center gap-1.5 text-lg font-bold tracking-tight text-white transition-opacity hover:opacity-90"
+          className="group flex items-center gap-1.5 text-2xl font-bold tracking-tighter text-white"
         >
-          <span className="font-display tracking-tight text-[1.15rem]">DM</span>
-          <span className="w-1.5 h-1.5 rounded-full bg-[#E91E63] transition-transform duration-300 group-hover:scale-125 shadow-[0_0_8px_#E91E63]" />
+          <span className="font-display tracking-tight text-3xl">DM</span>
+          <span className="w-2.5 h-2.5 rounded-full bg-[#FF0000] shadow-[0_0_12px_#FF0000] transition-transform duration-300 group-hover:scale-125" />
         </a>
 
-        {/* Center: Email with quick copy */}
-        <div className="hidden md:flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#131317] border border-white/[0.08] text-xs text-[#9CA3AF] transition-all hover:border-[#E91E63]/40 hover:text-white">
-          <a
-            href="mailto:divyanshmishra.python@gmail.com"
-            className="hover:underline tracking-wide transition-colors"
-          >
-            divyanshmishra.python@gmail.com
-          </a>
-          <button
-            onClick={copyEmail}
-            title="Copy email"
-            aria-label="Copy email address"
-            className="text-[#6B7280] hover:text-[#E91E63] transition-colors p-0.5 ml-1"
-          >
-            {copied ? <FiCheck className="text-[#10B981] text-xs" /> : <FiCopy className="text-xs" />}
-          </button>
-        </div>
+        {/* Center/Right: Nav Links */}
+        <nav className="hidden md:flex items-center gap-9 text-xs font-semibold tracking-widest uppercase">
+          {navLinks.map((link) => (
+            <a
+              key={link.name}
+              href={link.href}
+              className="text-[#9CA3AF] hover:text-white transition-colors duration-200 tracking-[0.18em]"
+            >
+              {link.name}
+            </a>
+          ))}
 
-        {/* Right: Minimal Navigation */}
-        <nav className="flex items-center gap-7 text-xs font-medium tracking-widest text-[#9CA3AF] uppercase">
-          <a
-            href="#about"
-            className="hover:text-white transition-colors duration-200 tracking-[0.16em]"
-          >
-            ABOUT
-          </a>
-          <a
-            href="#projects"
-            className="hover:text-white transition-colors duration-200 tracking-[0.16em]"
-          >
-            WORK
-          </a>
+          {/* Red Contact Button */}
           <a
             href="#contact"
-            className="hover:text-white transition-colors duration-200 tracking-[0.16em]"
+            className="btn-red !py-2.5 !px-6 !text-xs !font-bold"
           >
-            CONTACT
+            Contact Me
           </a>
         </nav>
+
+        {/* Mobile Hamburger Toggle */}
+        <button
+          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+          className="md:hidden text-white text-2xl p-1 focus:outline-none"
+          aria-label="Toggle Navigation Menu"
+        >
+          {mobileMenuOpen ? <FiX /> : <FiMenu />}
+        </button>
       </div>
+
+      {/* Mobile Drawer */}
+      {mobileMenuOpen && (
+        <div className="md:hidden bg-[#000000]/98 border-b border-white/10 px-6 py-6 space-y-4">
+          {navLinks.map((link) => (
+            <a
+              key={link.name}
+              href={link.href}
+              onClick={() => setMobileMenuOpen(false)}
+              className="block text-sm font-semibold tracking-widest text-[#D1D5DB] hover:text-[#FF0000] uppercase py-1"
+            >
+              {link.name}
+            </a>
+          ))}
+          <div className="pt-2">
+            <a
+              href="#contact"
+              onClick={() => setMobileMenuOpen(false)}
+              className="btn-red w-full text-center block text-xs font-bold"
+            >
+              Contact Me
+            </a>
+          </div>
+        </div>
+      )}
     </header>
   )
 }

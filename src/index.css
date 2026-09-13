@@ -1,39 +1,27 @@
 @import "tailwindcss";
 
 /* ======================================================
-   DESIGN SYSTEM — Divyansh Mishra
-   Reference Video Aesthetic:
-   - Deep near-black background
-   - Soft dark gray-black cards
-   - Accents: Dark Pink/Magenta (#E91E63), Emerald (#10B981), Soft Purple (#8B5CF6), Blue (#3B82F6)
-   - Rounded pill buttons with light border & vibrant hover
+   DESIGN SYSTEM — Ruchit P. Style Portfolio
+   Aesthetic:
+   - Deep pure black background (#000000)
+   - Primary accent: Strong Red (#FF0000 / #E60000)
+   - Text: White & light gray
+   - Cards: Dark charcoal (#0E0E12) with soft red glowing borders on hover
+   - Bold display typography with red highlights
    ====================================================== */
 
 :root {
-  --bg-primary: #070709;
-  --bg-secondary: #0D0D11;
-  --bg-surface: #131317;
-  --bg-surface-elevated: #1A1A20;
-  --bg-surface-hover: #22222A;
-  
-  --accent-magenta: #E91E63;
-  --accent-magenta-glow: rgba(233, 30, 99, 0.28);
-  --accent-emerald: #10B981;
-  --accent-emerald-glow: rgba(16, 185, 129, 0.25);
-  --accent-purple: #8B5CF6;
-  --accent-blue: #3B82F6;
-  
-  --text-white: #FFFFFF;
-  --text-pearl: #E4E4E7;
-  --text-muted: #9CA3AF;
-  --text-subtle: #6B7280;
-  
-  --border-subtle: rgba(255, 255, 255, 0.08);
-  --border-glow-magenta: rgba(233, 30, 99, 0.35);
-  --border-glow-emerald: rgba(16, 185, 129, 0.35);
-  
+  --bg-pure-black: #000000;
+  --bg-surface: #09090C;
+  --bg-card: #0E0E12;
+  --bg-card-hover: #141419;
+
+  --accent-red: #FF0000;
+  --accent-red-bright: #FF1A1A;
+  --accent-red-glow: rgba(255, 0, 0, 0.45);
+
+  --font-display: 'Anton', 'Archivo Black', -apple-system, sans-serif;
   --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-  --font-display: 'Space Grotesk', sans-serif;
   --font-mono: 'JetBrains Mono', monospace;
 }
 
@@ -44,8 +32,8 @@
 }
 
 html {
-  background-color: var(--bg-primary);
-  color: var(--text-pearl);
+  background-color: var(--bg-pure-black);
+  color: #FFFFFF;
   font-family: var(--font-sans);
   scroll-behavior: smooth;
   text-rendering: optimizeLegibility;
@@ -54,116 +42,123 @@ html {
 
 body {
   overflow-x: hidden;
-  background-color: var(--bg-primary);
+  background-color: var(--bg-pure-black);
   min-height: 100vh;
-  position: relative;
-}
-
-/* Subtle Ambient Glow */
-.ambient-glow {
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  z-index: 0;
-  background: 
-    radial-gradient(circle at 20% 15%, rgba(233, 30, 99, 0.05) 0%, transparent 40%),
-    radial-gradient(circle at 80% 45%, rgba(139, 92, 246, 0.04) 0%, transparent 40%),
-    radial-gradient(circle at 40% 85%, rgba(16, 185, 129, 0.04) 0%, transparent 40%);
 }
 
 .font-display {
   font-family: var(--font-display);
+  letter-spacing: 0.02em;
 }
 
 .font-mono {
   font-family: var(--font-mono);
 }
 
-/* Rounded Pill Button Style from Video */
-.btn-pill {
+/* ======================================================
+   RED ACCENT BUTTONS (Ruchit P. Style)
+   ====================================================== */
+
+.btn-red {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 14px 32px;
+  border-radius: 9999px;
+  font-size: 0.875rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #FFFFFF;
+  background: var(--accent-red);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 4px 24px var(--accent-red-glow), 0 0 12px rgba(255, 0, 0, 0.3);
+  cursor: pointer;
+  text-decoration: none;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s ease, background 0.25s ease;
+}
+
+.btn-red:hover {
+  transform: translateY(-2px) scale(1.03);
+  background: #FF1A1A;
+  box-shadow: 0 8px 32px rgba(255, 0, 0, 0.65), 0 0 20px rgba(255, 0, 0, 0.5);
+}
+
+.btn-red-outline {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 8px;
-  padding: 12px 28px;
+  padding: 12px 26px;
   border-radius: 9999px;
-  font-size: 0.875rem;
-  font-weight: 500;
-  letter-spacing: 0.02em;
+  font-size: 0.825rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: #FFFFFF;
+  background: #111115;
+  border: 1px solid rgba(255, 0, 0, 0.3);
+  cursor: pointer;
   text-decoration: none;
   transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-  cursor: pointer;
 }
 
-.btn-pill-dark {
-  background: #141418;
-  color: #FFFFFF;
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
-}
-
-.btn-pill-dark:hover {
-  background: #1E1E24;
-  border-color: rgba(233, 30, 99, 0.5);
-  box-shadow: 0 4px 20px rgba(233, 30, 99, 0.25);
+.btn-red-outline:hover {
+  background: #191920;
+  border-color: #FF0000;
+  box-shadow: 0 0 18px rgba(255, 0, 0, 0.35);
   transform: translateY(-2px);
 }
 
-.btn-pill-magenta {
-  background: #E91E63;
-  color: #FFFFFF;
-  border: 1px solid rgba(255, 255, 255, 0.25);
-  box-shadow: 0 4px 20px rgba(233, 30, 99, 0.35);
+/* ======================================================
+   CHARCOAL CARDS WITH SOFT RED BORDER & GLOW ON HOVER
+   ====================================================== */
+
+.ruchit-card {
+  background: var(--bg-card);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 24px;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.35s ease, box-shadow 0.35s ease;
 }
 
-.btn-pill-magenta:hover {
-  background: #F06292;
-  box-shadow: 0 6px 24px rgba(233, 30, 99, 0.5);
-  transform: translateY(-2px);
+.ruchit-card:hover {
+  background: var(--bg-card-hover);
+  border-color: rgba(255, 0, 0, 0.45);
+  box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.8), 0 0 30px -10px rgba(255, 0, 0, 0.3);
+  transform: translateY(-4px);
 }
 
-.btn-pill-emerald {
-  background: #10B981;
-  color: #FFFFFF;
-  border: 1px solid rgba(255, 255, 255, 0.25);
-  box-shadow: 0 4px 20px rgba(16, 185, 129, 0.35);
+/* ======================================================
+   AMBIENT RED GLOW HIGHLIGHTS
+   ====================================================== */
+
+.red-ambient-glow {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background: 
+    radial-gradient(circle at 85% 20%, rgba(255, 0, 0, 0.07) 0%, transparent 45%),
+    radial-gradient(circle at 15% 65%, rgba(255, 0, 0, 0.04) 0%, transparent 45%);
 }
 
-.btn-pill-emerald:hover {
-  background: #34D399;
-  box-shadow: 0 6px 24px rgba(16, 185, 129, 0.5);
-  transform: translateY(-2px);
-}
+/* ======================================================
+   CUSTOM RED SCROLLBAR
+   ====================================================== */
 
-/* Card Surface */
-.video-card {
-  background: var(--bg-surface);
-  border: 1px solid var(--border-subtle);
-  border-radius: 20px;
-  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.video-card:hover {
-  background: var(--bg-surface-elevated);
-  border-color: rgba(255, 255, 255, 0.18);
-  box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.6), 0 0 30px -10px var(--accent-magenta-glow);
-  transform: translateY(-3px);
-}
-
-/* Custom Scrollbar */
 ::-webkit-scrollbar {
   width: 6px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #070709;
+  background: #000000;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #22222A;
+  background: #202025;
   border-radius: 3px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #E91E63;
+  background: #FF0000;
 }
