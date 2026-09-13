@@ -5,7 +5,6 @@ export default function CursorGlow() {
   const [visible, setVisible] = useState(false)
 
   useEffect(() => {
-    // Only enable on desktop pointer devices
     const isTouch = window.matchMedia('(pointer: coarse)').matches
     if (isTouch) return
 
@@ -34,9 +33,9 @@ export default function CursorGlow() {
         left: `${pos.x}px`,
         top: `${pos.y}px`,
         transform: 'translate(-50%, -50%)',
-        width: '420px',
-        height: '420px',
-        background: 'radial-gradient(circle, rgba(224, 122, 61, 0.055) 0%, rgba(61, 42, 61, 0.02) 50%, transparent 70%)',
+        width: '450px',
+        height: '450px',
+        background: 'radial-gradient(circle, rgba(233, 30, 99, 0.065) 0%, rgba(139, 92, 246, 0.03) 40%, transparent 70%)',
         borderRadius: '50%',
       }}
     />

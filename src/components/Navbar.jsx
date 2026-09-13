@@ -23,7 +23,7 @@ export default function Navbar() {
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled
-          ? 'bg-[#08080A]/85 backdrop-blur-md border-b border-[#201D1A]/60 py-3.5'
+          ? 'bg-[#070709]/85 backdrop-blur-md border-b border-white/[0.06] py-3.5'
           : 'bg-transparent py-5'
       }`}
     >
@@ -34,11 +34,11 @@ export default function Navbar() {
           className="group flex items-center gap-1.5 text-lg font-bold tracking-tight text-white transition-opacity hover:opacity-90"
         >
           <span className="font-display tracking-tight text-[1.15rem]">DM</span>
-          <span className="w-1.5 h-1.5 rounded-full bg-[#E07A3D] transition-transform duration-300 group-hover:scale-125" />
+          <span className="w-1.5 h-1.5 rounded-full bg-[#E91E63] transition-transform duration-300 group-hover:scale-125 shadow-[0_0_8px_#E91E63]" />
         </a>
 
         {/* Center: Email with quick copy */}
-        <div className="hidden md:flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#12100E]/70 border border-white/5 text-xs text-[#9E9A95] transition-all hover:border-[#E07A3D]/30 hover:text-[#E8E6E3]">
+        <div className="hidden md:flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#131317] border border-white/[0.08] text-xs text-[#9CA3AF] transition-all hover:border-[#E91E63]/40 hover:text-white">
           <a
             href="mailto:divyanshmishra.python@gmail.com"
             className="hover:underline tracking-wide transition-colors"
@@ -49,29 +49,29 @@ export default function Navbar() {
             onClick={copyEmail}
             title="Copy email"
             aria-label="Copy email address"
-            className="text-[#6E6A65] hover:text-[#E07A3D] transition-colors p-0.5 ml-1"
+            className="text-[#6B7280] hover:text-[#E91E63] transition-colors p-0.5 ml-1"
           >
-            {copied ? <FiCheck className="text-emerald-400 text-xs" /> : <FiCopy className="text-xs" />}
+            {copied ? <FiCheck className="text-[#10B981] text-xs" /> : <FiCopy className="text-xs" />}
           </button>
         </div>
 
         {/* Right: Minimal Navigation */}
-        <nav className="flex items-center gap-6 text-xs font-medium tracking-widest text-[#9E9A95] uppercase">
+        <nav className="flex items-center gap-7 text-xs font-medium tracking-widest text-[#9CA3AF] uppercase">
           <a
             href="#about"
-            className="hover:text-white transition-colors duration-200 tracking-[0.15em]"
+            className="hover:text-white transition-colors duration-200 tracking-[0.16em]"
           >
             ABOUT
           </a>
           <a
             href="#projects"
-            className="hover:text-white transition-colors duration-200 tracking-[0.15em]"
+            className="hover:text-white transition-colors duration-200 tracking-[0.16em]"
           >
             WORK
           </a>
           <a
             href="#contact"
-            className="hover:text-white transition-colors duration-200 tracking-[0.15em]"
+            className="hover:text-white transition-colors duration-200 tracking-[0.16em]"
           >
             CONTACT
           </a>

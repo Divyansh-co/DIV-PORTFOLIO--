@@ -19,10 +19,9 @@ export default function App() {
   }, [])
 
   return (
-    <div className="relative min-h-screen bg-[#08080A] text-[#E8E6E3]">
-      {/* Ambient Film Grain & Volumetric Lighting */}
-      <div className="ambient-grain" />
-      <div className="volumetric-light" />
+    <div className="relative min-h-screen bg-[#070709] text-[#E4E4E7]">
+      {/* Ambient Radial Atmosphere */}
+      <div className="ambient-glow" />
 
       {/* Global Overlays */}
       <Loader onFinish={handleLoadFinish} />
@@ -32,7 +31,7 @@ export default function App() {
       {/* Navigation */}
       <Navbar />
 
-      {/* Main Content Assembly */}
+      {/* Main Assembly */}
       <main>
         <Hero />
         <About />
@@ -42,7 +41,7 @@ export default function App() {
         <Contact />
       </main>
 
-      {/* Minimal Footer */}
+      {/* Footer */}
       <Footer />
     </div>
   )
