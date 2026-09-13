@@ -1,16 +1,14 @@
 import { useRef } from 'react'
 import { useFrame } from '@react-three/fiber'
-import * as THREE from 'three'
 
 const shapes = [
-  { type: 'icosahedron', args: [0.4, 0], color: '#00e5ff', pos: [-3, 2, -1], speed: 0.3 },
-  { type: 'octahedron', args: [0.35, 0], color: '#a855f7', pos: [3.5, -1, -2], speed: 0.4 },
-  { type: 'torus', args: [0.3, 0.1, 16, 32], color: '#ec4899', pos: [-2.5, -2, 0], speed: 0.5 },
-  { type: 'dodecahedron', args: [0.3, 0], color: '#14b8a6', pos: [2, 2.5, -1.5], speed: 0.35 },
-  { type: 'tetrahedron', args: [0.35, 0], color: '#3b82f6', pos: [-4, 0.5, -1], speed: 0.45 },
-  { type: 'icosahedron', args: [0.25, 0], color: '#f59e0b', pos: [4, 1, -2], speed: 0.25 },
-  { type: 'octahedron', args: [0.2, 0], color: '#00e5ff', pos: [1, -2.5, -1], speed: 0.55 },
-  { type: 'tetrahedron', args: [0.2, 0], color: '#a855f7', pos: [-1.5, 3, -2], speed: 0.3 },
+  { type: 'icosahedron', args: [0.35, 0], color: '#C45C26', pos: [-3, 1.8, -1.5], speed: 0.15 },
+  { type: 'octahedron', args: [0.28, 0], color: '#5C3A5C', pos: [3.2, -0.8, -2], speed: 0.2 },
+  { type: 'dodecahedron', args: [0.25, 0], color: '#8A8A8A', pos: [-2.2, -1.8, -0.5], speed: 0.18 },
+  { type: 'tetrahedron', args: [0.3, 0], color: '#D4783A', pos: [2.5, 2.2, -1.5], speed: 0.12 },
+  { type: 'octahedron', args: [0.2, 0], color: '#4A2C4A', pos: [-3.5, 0.3, -1.2], speed: 0.22 },
+  { type: 'icosahedron', args: [0.22, 0], color: '#C45C26', pos: [1, -2.3, -1.5], speed: 0.16 },
+  { type: 'dodecahedron', args: [0.18, 0], color: '#5C3A5C', pos: [-1.2, 2.8, -2], speed: 0.14 },
 ]
 
 function FloatingShape({ type, args, color, position, speed }) {
@@ -20,27 +18,19 @@ function FloatingShape({ type, args, color, position, speed }) {
   useFrame((state) => {
     if (!ref.current) return
     const t = state.clock.elapsedTime
-    ref.current.rotation.x = t * speed * 0.5
-    ref.current.rotation.y = t * speed * 0.7
-    ref.current.rotation.z = t * speed * 0.3
-    ref.current.position.y = initialPos.current[1] + Math.sin(t * speed + initialPos.current[0]) * 0.5
-    ref.current.position.x = initialPos.current[0] + Math.cos(t * speed * 0.5 + initialPos.current[1]) * 0.3
+    ref.current.rotation.x = t * speed * 0.3
+    ref.current.rotation.y = t * speed * 0.5
+    ref.current.position.y = initialPos.current[1] + Math.sin(t * speed + initialPos.current[0]) * 0.35
+    ref.current.position.x = initialPos.current[0] + Math.cos(t * speed * 0.4 + initialPos.current[1]) * 0.2
   })
 
   const renderGeometry = () => {
     switch (type) {
-      case 'icosahedron':
-        return <icosahedronGeometry args={args} />
-      case 'octahedron':
-        return <octahedronGeometry args={args} />
-      case 'torus':
-        return <torusGeometry args={args} />
-      case 'dodecahedron':
-        return <dodecahedronGeometry args={args} />
-      case 'tetrahedron':
-        return <tetrahedronGeometry args={args} />
-      default:
-        return <icosahedronGeometry args={args} />
+      case 'icosahedron': return <icosahedronGeometry args={args} />
+      case 'octahedron': return <octahedronGeometry args={args} />
+      case 'dodecahedron': return <dodecahedronGeometry args={args} />
+      case 'tetrahedron': return <tetrahedronGeometry args={args} />
+      default: return <icosahedronGeometry args={args} />
     }
   }
 
@@ -50,10 +40,12 @@ function FloatingShape({ type, args, color, position, speed }) {
       <meshStandardMaterial
         color={color}
         transparent
-        opacity={0.35}
+        opacity={0.2}
         wireframe
         emissive={color}
-        emissiveIntensity={0.3}
+        emissiveIntensity={0.15}
+        roughness={0.4}
+        metalness={0.6}
       />
     </mesh>
   )
@@ -62,8 +54,9 @@ function FloatingShape({ type, args, color, position, speed }) {
 export default function FloatingIcons() {
   return (
     <group>
-      <ambientLight intensity={0.3} />
-      <pointLight position={[0, 0, 5]} intensity={1} color="#00e5ff" />
+      <ambientLight intensity={0.2} />
+      <pointLight position={[0, 0, 5]} intensity={0.6} color="#C45C26" />
+      <pointLight position={[-3, 3, 3]} intensity={0.3} color="#5C3A5C" />
       {shapes.map((shape, i) => (
         <FloatingShape key={i} {...shape} position={shape.pos} />
       ))}

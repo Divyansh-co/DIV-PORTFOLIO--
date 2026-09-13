@@ -11,7 +11,6 @@ export default function Contact() {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    // Placeholder — would integrate with Formspree/EmailJS
     setSubmitted(true)
     setTimeout(() => setSubmitted(false), 3000)
     setFormData({ name: '', email: '', message: '' })
@@ -21,9 +20,9 @@ export default function Contact() {
     <section className="section contact" id="contact" ref={ref}>
       <motion.h2
         className="section-title"
-        initial={{ opacity: 0, y: 30 }}
+        initial={{ opacity: 0, y: 25 }}
         animate={isInView ? { opacity: 1, y: 0 } : {}}
-        transition={{ duration: 0.6 }}
+        transition={{ duration: 0.7 }}
       >
         Get In Touch
       </motion.h2>
@@ -31,13 +30,11 @@ export default function Contact() {
       <div className="contact-layout">
         <motion.div
           className="contact-info"
-          initial={{ opacity: 0, x: -40 }}
+          initial={{ opacity: 0, x: -35 }}
           animate={isInView ? { opacity: 1, x: 0 } : {}}
           transition={{ duration: 0.7, delay: 0.2 }}
         >
-          <h3>
-            Let's build something <span>amazing</span> together
-          </h3>
+          <h3>Let's build something <span>remarkable</span> together</h3>
 
           <div className="contact-email">
             <FiMail />
@@ -52,7 +49,7 @@ export default function Contact() {
               target="_blank"
               rel="noopener noreferrer"
               className="social-link"
-              whileHover={{ scale: 1.1 }}
+              whileHover={{ scale: 1.08 }}
               whileTap={{ scale: 0.95 }}
             >
               <FaGithub />
@@ -62,7 +59,7 @@ export default function Contact() {
               target="_blank"
               rel="noopener noreferrer"
               className="social-link"
-              whileHover={{ scale: 1.1 }}
+              whileHover={{ scale: 1.08 }}
               whileTap={{ scale: 0.95 }}
             >
               <FaLinkedin />
@@ -73,7 +70,7 @@ export default function Contact() {
         <motion.form
           className="contact-form"
           onSubmit={handleSubmit}
-          initial={{ opacity: 0, x: 40 }}
+          initial={{ opacity: 0, x: 35 }}
           animate={isInView ? { opacity: 1, x: 0 } : {}}
           transition={{ duration: 0.7, delay: 0.3 }}
         >
@@ -113,13 +110,11 @@ export default function Contact() {
           <motion.button
             type="submit"
             className="btn-primary"
-            whileHover={{ scale: 1.03 }}
-            whileTap={{ scale: 0.97 }}
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
             style={{ width: '100%', justifyContent: 'center' }}
           >
-            <span style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-              {submitted ? '✓ Message Sent!' : <><FiSend /> Send Message</>}
-            </span>
+            <span>{submitted ? '✓ Sent!' : <><FiSend /> Send Message</>}</span>
           </motion.button>
         </motion.form>
       </div>

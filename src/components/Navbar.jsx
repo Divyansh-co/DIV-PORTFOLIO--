@@ -14,10 +14,8 @@ export default function Navbar() {
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 50)
-
-      // Detect active section
-      const sections = ['hero', 'about', 'skills', 'career', 'projects', 'techstack', 'contact']
-      for (const id of sections.reverse()) {
+      const sections = ['contact', 'techstack', 'projects', 'career', 'skills', 'about', 'hero']
+      for (const id of sections) {
         const el = document.getElementById(id)
         if (el) {
           const rect = el.getBoundingClientRect()
@@ -28,7 +26,6 @@ export default function Navbar() {
         }
       }
     }
-
     window.addEventListener('scroll', handleScroll, { passive: true })
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
@@ -36,16 +33,13 @@ export default function Navbar() {
   const handleNavClick = (e, href) => {
     e.preventDefault()
     setMenuOpen(false)
-    const el = document.querySelector(href)
-    if (el) {
-      el.scrollIntoView({ behavior: 'smooth' })
-    }
+    document.querySelector(href)?.scrollIntoView({ behavior: 'smooth' })
   }
 
   return (
     <nav className={`navbar ${scrolled ? 'scrolled' : ''}`}>
       <a href="#hero" className="nav-logo" onClick={(e) => handleNavClick(e, '#hero')}>
-        DM
+        D<span>M</span>
       </a>
 
       <span className="nav-email">divyanshmishra.python@gmail.com</span>
@@ -64,11 +58,7 @@ export default function Navbar() {
         ))}
       </ul>
 
-      <button
-        className="nav-toggle"
-        onClick={() => setMenuOpen(!menuOpen)}
-        aria-label="Toggle navigation"
-      >
+      <button className="nav-toggle" onClick={() => setMenuOpen(!menuOpen)} aria-label="Toggle navigation">
         <span style={menuOpen ? { transform: 'rotate(45deg) translate(5px, 5px)' } : {}} />
         <span style={menuOpen ? { opacity: 0 } : {}} />
         <span style={menuOpen ? { transform: 'rotate(-45deg) translate(5px, -5px)' } : {}} />

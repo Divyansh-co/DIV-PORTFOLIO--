@@ -8,18 +8,18 @@ const skills = [
   {
     id: 'frontend',
     icon: <FiLayout />,
-    title: 'FRONTEND',
+    title: 'Frontend',
     subtitle: 'Building Interactive UIs',
-    description: 'Crafting responsive, performant user interfaces with modern frameworks, smooth animations, and pixel-perfect designs that delight users.',
+    description: 'Crafting responsive, performant user interfaces with modern frameworks and smooth animations.',
     tags: ['React.js', 'TypeScript', 'Tailwind CSS', 'Vite', 'Framer Motion', 'Three.js', 'HTML5/CSS3'],
     iconClass: 'frontend',
   },
   {
     id: 'backend',
     icon: <FiServer />,
-    title: 'BACKEND',
+    title: 'Backend',
     subtitle: 'Scalable Server Architecture',
-    description: 'Designing robust APIs, microservices, and data pipelines with emphasis on performance, security, and cloud-native deployment patterns.',
+    description: 'Designing robust APIs, microservices, and data pipelines with emphasis on performance and security.',
     tags: ['Python', 'FastAPI', 'Django', 'Node.js', 'Express', 'PostgreSQL', 'Redis', 'Docker', 'AWS'],
     iconClass: 'backend',
   },
@@ -33,9 +33,9 @@ export default function Skills() {
     <section className="section skills" id="skills" ref={ref}>
       <motion.h2
         className="section-title"
-        initial={{ opacity: 0, y: 30 }}
+        initial={{ opacity: 0, y: 25 }}
         animate={isInView ? { opacity: 1, y: 0 } : {}}
-        transition={{ duration: 0.6 }}
+        transition={{ duration: 0.7 }}
       >
         What I Do
       </motion.h2>
@@ -43,7 +43,7 @@ export default function Skills() {
       <div className="skills-layout">
         <motion.div
           className="skills-3d"
-          initial={{ opacity: 0, x: -60 }}
+          initial={{ opacity: 0, x: -50 }}
           animate={isInView ? { opacity: 1, x: 0 } : {}}
           transition={{ duration: 0.8, delay: 0.2 }}
         >
@@ -59,18 +59,17 @@ export default function Skills() {
             <motion.div
               key={skill.id}
               className="skill-card"
-              initial={{ opacity: 0, x: 60 }}
+              initial={{ opacity: 0, x: 50 }}
               animate={isInView ? { opacity: 1, x: 0 } : {}}
-              transition={{ duration: 0.6, delay: 0.3 + i * 0.2 }}
-              whileHover={{ x: 8 }}
+              transition={{ duration: 0.6, delay: 0.3 + i * 0.18 }}
             >
               <div className="skill-card-header">
                 <div className={`skill-card-icon ${skill.iconClass}`}>
                   {skill.icon}
                 </div>
+                <h3>{skill.title}</h3>
               </div>
-              <h3>{skill.title}</h3>
-              <p><strong style={{ color: 'var(--text-primary)' }}>{skill.subtitle}</strong></p>
+              <p><strong style={{ color: 'var(--text-primary)', fontWeight: 500 }}>{skill.subtitle}</strong></p>
               <p>{skill.description}</p>
               <div className="skill-tags">
                 {skill.tags.map((tag) => (

@@ -12,42 +12,31 @@ export default function Loader({ onFinish }) {
           setTimeout(() => {
             setHidden(true)
             onFinish?.()
-          }, 400)
+          }, 500)
           return 100
         }
-        return prev + Math.random() * 15 + 5
+        return prev + Math.random() * 12 + 4
       })
-    }, 120)
-
+    }, 140)
     return () => clearInterval(interval)
   }, [onFinish])
 
   return (
     <div className={`loader-overlay ${hidden ? 'hidden' : ''}`}>
-      <div className="loader-logo">DM</div>
+      <div className="loader-logo">D<span>.</span>M</div>
       <div style={{
-        fontFamily: "'Space Grotesk', sans-serif",
-        fontSize: '0.85rem',
-        color: 'rgba(255,255,255,0.4)',
-        letterSpacing: '0.2em',
+        fontFamily: "'Inter', sans-serif",
+        fontSize: '0.72rem',
+        color: 'rgba(245, 245, 244, 0.25)',
+        letterSpacing: '0.25em',
         textTransform: 'uppercase',
-        marginBottom: '24px',
+        marginBottom: '28px',
+        fontWeight: 300,
       }}>
-        Loading Experience
+        Loading
       </div>
       <div className="loader-bar">
-        <div
-          className="loader-bar-fill"
-          style={{ width: `${Math.min(progress, 100)}%` }}
-        />
-      </div>
-      <div style={{
-        fontFamily: "'Space Grotesk', sans-serif",
-        fontSize: '0.75rem',
-        color: 'rgba(255,255,255,0.2)',
-        marginTop: '12px',
-      }}>
-        {Math.min(Math.round(progress), 100)}%
+        <div className="loader-bar-fill" style={{ width: `${Math.min(progress, 100)}%` }} />
       </div>
     </div>
   )

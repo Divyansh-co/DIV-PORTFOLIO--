@@ -12,8 +12,8 @@ export default function CursorGlow() {
     }
 
     const animateTrail = () => {
-      trailPos.current.x += (pos.x - trailPos.current.x) * 0.15
-      trailPos.current.y += (pos.y - trailPos.current.y) * 0.15
+      trailPos.current.x += (pos.x - trailPos.current.x) * 0.12
+      trailPos.current.y += (pos.y - trailPos.current.y) * 0.12
       if (trailRef.current) {
         trailRef.current.style.left = `${trailPos.current.x}px`
         trailRef.current.style.top = `${trailPos.current.y}px`
@@ -30,20 +30,12 @@ export default function CursorGlow() {
     }
   }, [pos.x, pos.y])
 
-  // Hide on mobile/touch
-  const isTouchDevice = 'ontouchstart' in window
-  if (isTouchDevice) return null
+  if ('ontouchstart' in window) return null
 
   return (
     <>
-      <div
-        className="cursor-glow"
-        style={{ left: `${pos.x}px`, top: `${pos.y}px` }}
-      />
-      <div
-        ref={trailRef}
-        className="cursor-trail"
-      />
+      <div className="cursor-glow" style={{ left: `${pos.x}px`, top: `${pos.y}px` }} />
+      <div ref={trailRef} className="cursor-trail" />
     </>
   )
 }

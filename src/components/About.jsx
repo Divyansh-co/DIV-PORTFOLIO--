@@ -1,7 +1,8 @@
-import { Suspense, useRef, useEffect, useState } from 'react'
+import { Suspense, useRef } from 'react'
 import { Canvas } from '@react-three/fiber'
 import { motion, useInView } from 'framer-motion'
 import FloatingIcons from './three/FloatingIcons'
+import { FiMail } from 'react-icons/fi'
 
 const stats = [
   { value: 'Top 5%', label: "Dean's List" },
@@ -15,7 +16,6 @@ export default function About() {
 
   return (
     <section className="section about" id="about" ref={ref}>
-      {/* 3D Background */}
       <div className="about-3d-bg">
         <Canvas camera={{ position: [0, 0, 6], fov: 50 }}>
           <Suspense fallback={null}>
@@ -26,16 +26,16 @@ export default function About() {
 
       <motion.div
         className="about-content"
-        initial={{ opacity: 0, y: 60 }}
+        initial={{ opacity: 0, y: 50 }}
         animate={isInView ? { opacity: 1, y: 0 } : {}}
-        transition={{ duration: 0.8, ease: 'easeOut' }}
+        transition={{ duration: 0.9, ease: 'easeOut' }}
       >
         <h2 className="section-title">About Me</h2>
 
         <p className="about-text">
           B.Tech Computer Science student (Class of 2028, Dean's List – Top 5%) specializing in
           Python, full-stack development, and applied AI systems. Experienced building production
-          SaaS, multi-agent AI pipelines, and blockchain-backed verification systems. Strong
+          SaaS platforms, multi-agent AI pipelines, and blockchain-backed verification systems. Strong
           foundation in system design, microservices, and cloud-native practices.
         </p>
 
@@ -44,15 +44,31 @@ export default function About() {
             <motion.div
               key={stat.label}
               className="stat-item"
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 25 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.6, delay: 0.3 + i * 0.15, ease: 'easeOut' }}
+              transition={{ duration: 0.6, delay: 0.3 + i * 0.12, ease: 'easeOut' }}
             >
               <div className="stat-value">{stat.value}</div>
               <div className="stat-label">{stat.label}</div>
             </motion.div>
           ))}
         </div>
+
+        <motion.a
+          href="#contact"
+          className="btn-outline"
+          style={{ marginTop: '40px' }}
+          initial={{ opacity: 0 }}
+          animate={isInView ? { opacity: 1 } : {}}
+          transition={{ duration: 0.6, delay: 0.8 }}
+          whileHover={{ scale: 1.03 }}
+          onClick={(e) => {
+            e.preventDefault()
+            document.querySelector('#contact')?.scrollIntoView({ behavior: 'smooth' })
+          }}
+        >
+          <FiMail /> Contact Me
+        </motion.a>
       </motion.div>
     </section>
   )
