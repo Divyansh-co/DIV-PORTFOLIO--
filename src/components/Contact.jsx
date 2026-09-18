@@ -219,7 +219,7 @@ export default function Contact() {
               </a>
 
               <a
-                href="https://www.linkedin.com/in/divyanshmishra/"
+                href="https://www.linkedin.com/in/divyansh-mishra-a658643b0/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="btn-red-outline flex-1 flex items-center justify-center gap-2"

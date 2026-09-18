@@ -103,6 +103,8 @@ The project also includes an automated deployment workflow at `.github/workflows
 ## 📬 Contact & Connect
 
 - **Engineer**: Divyansh Mishra
+- **Live Demo**: [portfoliodiv.vercel.app](https://portfoliodiv.vercel.app)
 - **Email**: [divyanshmishra.python@gmail.com](mailto:divyanshmishra.python@gmail.com)
-- **LinkedIn**: [linkedin.com/in/divyanshmishra](https://www.linkedin.com/in/divyanshmishra/)
+- **Phone**: +91 90263 79972
+- **LinkedIn**: [linkedin.com/in/divyansh-mishra-a658643b0](https://www.linkedin.com/in/divyansh-mishra-a658643b0/)
 - **GitHub**: [github.com/Divyansh-co](https://github.com/Divyansh-co)

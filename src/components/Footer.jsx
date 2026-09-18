@@ -32,7 +32,7 @@ export default function Footer() {
             </a>
 
             <a
-              href="https://www.linkedin.com/in/divyanshmishra/"
+              href="https://www.linkedin.com/in/divyansh-mishra-a658643b0/"
               target="_blank"
               rel="noopener noreferrer"
               className="text-[#D1D5DB] hover:text-[#FF0000] transition-colors flex items-center gap-1.5"
