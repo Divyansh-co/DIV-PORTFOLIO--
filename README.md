@@ -85,9 +85,18 @@ npm run preview
 
 ---
 
-## 🌐 Deployment (GitHub Pages)
+## 🌐 Deployment
 
-The project includes an automated deployment workflow at `.github/workflows/deploy.yml`. When you push to the `main` branch, GitHub Actions will automatically build and publish the site.
+### Vercel (Recommended with Full-Stack Serverless APIs)
+The project is configured for one-click deployment on [Vercel](https://vercel.com/):
+1. Import the repository on Vercel.
+2. The `vercel.json` and `/api` directory will automatically configure:
+   - Client bundle build (`npm run build` -> `dist/`)
+   - Serverless API functions (`/api/contact`, `/api/health`)
+   - SPA route rewrites to `index.html`
+
+### GitHub Pages
+The project also includes an automated deployment workflow at `.github/workflows/deploy.yml`. When you push to the `main` branch, GitHub Actions will automatically build and publish the frontend static bundle.
 
 ---
 
