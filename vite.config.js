@@ -9,5 +9,5 @@ export default defineConfig({
     tailwindcss(),
   ],
   // Use subpath only when deploying via GitHub Actions, otherwise root '/' for Vercel & local
-  base: process.env.VITE_BASE_PATH || (process.env.GITHUB_ACTIONS && !process.env.VERCEL ? '/DIV-PORTFOLIO-/' : '/'),
+  base: process.env.VITE_BASE_PATH || (process.env.GITHUB_ACTIONS && !process.env.VERCEL ? '/DIV-PORTFOLIO--/' : '/'),
 })

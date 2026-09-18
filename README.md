@@ -2,8 +2,8 @@
 
 A modern, high-performance full-stack 3D portfolio website showcasing full-stack engineering, multi-agent AI architectures, and interactive 3D graphics.
 
-[![GitHub Pages](https://github.com/Divyansh-co/DIV-PORTFOLIO-/actions/workflows/deploy.yml/badge.svg)](https://github.com/Divyansh-co/DIV-PORTFOLIO-/actions/workflows/deploy.yml)
-[![Live Preview](https://img.shields.io/badge/Live-Preview-FF0000?style=flat&logo=googlechrome&logoColor=white)](https://divyansh-co.github.io/DIV-PORTFOLIO-/)
+[![GitHub Pages](https://github.com/Divyansh-co/DIV-PORTFOLIO--/actions/workflows/deploy.yml/badge.svg)](https://github.com/Divyansh-co/DIV-PORTFOLIO--/actions/workflows/deploy.yml)
+[![Live Preview](https://img.shields.io/badge/Live-Preview-FF0000?style=flat&logo=googlechrome&logoColor=white)](https://divyansh-co.github.io/DIV-PORTFOLIO--/)
 
 ---
 
@@ -46,8 +46,8 @@ A modern, high-performance full-stack 3D portfolio website showcasing full-stack
 
 ### 1. Clone the Repository
 ```bash
-git clone https://github.com/Divyansh-co/DIV-PORTFOLIO-.git
-cd DIV-PORTFOLIO-
+git clone https://github.com/Divyansh-co/DIV-PORTFOLIO--.git
+cd DIV-PORTFOLIO--
 ```
 
 ### 2. Install Dependencies
