@@ -55,6 +55,19 @@ body {
   font-family: var(--font-mono);
 }
 
+.hero-heading {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(2.5rem, 5vw + 1rem, 5.5rem);
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  background: linear-gradient(180deg, #FFFFFF 0%, #D7E2EA 65%, #9CA3AF 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+}
+
 /* ======================================================
    RED ACCENT BUTTONS (Ruchit P. Style)
    ====================================================== */
